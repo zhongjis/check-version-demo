@@ -5,7 +5,7 @@
 1. In terminal, under your project directory and run ``./mvnw spring-boot:run`` to build <br>
 2. test the endpoint on Postman: http://localhost:8080/api/v1/version/check.
 ### Cloud - AWS (Available until Oct 10, 2020) 
-1. check this [Link](http://3.128.186.177:8080/version-check-0.0.1-SNAPSHOT/api/v1/version/hellowrold) 
+1. check this [Link](http://3.128.186.177:8080/version-check-0.0.1-SNAPSHOT/api/v1/version/helloworld) 
 to see if the server is online (You will see "*Hello World from Zhongjie Shen*" if the server is up)
 2. test the endpoint on Postman: http://3.128.186.177:8080/version-check-0.0.1-SNAPSHOT/api/v1/version/check.
 
