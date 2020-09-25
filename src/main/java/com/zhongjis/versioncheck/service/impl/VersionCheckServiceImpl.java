@@ -60,7 +60,10 @@ public class VersionCheckServiceImpl implements VersionCheckService {
   private boolean checkVersionIdIsValid(String[] versionIdArr) throws IlegalVersionIdException{
     try {
       for (String str : versionIdArr) {
-        Integer.parseInt(str);
+        int temp = Integer.parseInt(str);
+        if (temp < 0) {
+          throw new NumberFormatException();
+        }
       }
     } catch (NumberFormatException e) {
       throw new IlegalVersionIdException("Ilegal Version Id detected, please try again");

@@ -33,5 +33,6 @@ public class VersionCheckServiceUnitTest {
   public void testCheckVersionWithIlegalVersionId() throws IlegalVersionIdException{
     versionCheckService.checkVersion("a.0.0", "1.1.1");
     versionCheckService.checkVersion("1.0.0", "c.1.1");
+    versionCheckService.checkVersion("1.-11.0", "c.1.1");
   }
 }
