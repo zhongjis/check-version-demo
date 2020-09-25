@@ -12,7 +12,8 @@ public class VersionCheckService {
     String[] splitedOne = versionOne.split("\\.");
     String[] splitedTwo = versionTwo.split("\\.");
 
-    return compareTwoVersionArr(splitedOne, splitedTwo);
+    String symbol = compareTwoVersionArr(splitedOne, splitedTwo);
+    return versionOne + " is \"" + symbol + "\" " + versionTwo;
   }
 
   private String compareTwoVersionArr(String[] splitedOne, String[] splitedTwo) {
@@ -25,17 +26,17 @@ public class VersionCheckService {
       int numOne = Integer.parseInt(splitedOne[index]);
       int numTwo = Integer.parseInt(splitedTwo[index]);
 
-      if (numOne > numTwo) return ">";
-      else if (numOne < numTwo) return "<";
+      if (numOne > numTwo) return "after";
+      else if (numOne < numTwo) return "before";
       index++;
     }
 
     if (lenOne > lenTwo) {
-      return ">";
+      return "after";
     } else if (lenOne < lenTwo) {
-      return "<";
+      return "before";
     } else {
-      return "=";
+      return "same as";
     }
   }
 }

@@ -38,9 +38,7 @@ public class VersionCheckController {
     String firstVersionId = jsonNode.get("firstVersionId").asText();
     String secondVersionId = jsonNode.get("secondVersionId").asText();
 
-    String symbol = versionCheckService.checkVersion(firstVersionId, secondVersionId);
-
-    String result = firstVersionId + " " + symbol + " " + secondVersionId;
+    String result = versionCheckService.checkVersion(firstVersionId, secondVersionId);
 
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
