@@ -25,6 +25,8 @@ public class VersionCheckServiceUnitTest {
         "2.0.0", "1.0.0"), "2.0.0 is \"after\" 1.0.0");
     assertEquals("2.0 is \"before\" 3.0.0", versionCheckService.checkVersion(
         "2.0", "3.0.0"), "2.0 is \"before\" 3.0.0");
+    assertEquals("2.0 is \"equal\" 2.0.0", versionCheckService.checkVersion(
+        "2.0", "2.0.0"), "2.0 is \"equal\" 2.0.0");
   }
 
   @Test(expected = IlegalVersionIdException.class)

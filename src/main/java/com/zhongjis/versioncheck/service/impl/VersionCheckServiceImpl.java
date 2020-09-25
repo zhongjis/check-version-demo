@@ -37,14 +37,26 @@ public class VersionCheckServiceImpl implements VersionCheckService {
     }
 
     if (lenOne > lenTwo) {
-      return "after";
+      while (index < lenOne) {
+        int num = Integer.parseInt(splitedOne[index]);
+        if (num > 0) {
+          return "after";
+        }
+        index++;
+      }
     } else if (lenOne < lenTwo) {
-      return "before";
-    } else {
-      return "same as";
+      while (index < lenTwo) {
+        int num = Integer.parseInt(splitedTwo[index]);
+        if (num > 0) {
+          return "before";
+        }
+        index++;
+      }
     }
+    return "equal";
   }
 
+  // NOTE: this function will consider ... is also valid
   private boolean checkVersionIdIsValid(String[] versionIdArr) throws IlegalVersionIdException{
     try {
       for (String str : versionIdArr) {
