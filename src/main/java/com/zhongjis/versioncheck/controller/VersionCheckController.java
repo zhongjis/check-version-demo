@@ -3,6 +3,7 @@ package com.zhongjis.versioncheck.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zhongjis.versioncheck.controller.exception.IlegalVersionIdException;
 import com.zhongjis.versioncheck.service.VersionCheckService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,12 @@ public class VersionCheckController {
     String firstVersionId = jsonNode.get("firstVersionId").asText();
     String secondVersionId = jsonNode.get("secondVersionId").asText();
 
-    String result = versionCheckService.checkVersion(firstVersionId, secondVersionId);
+    String result;
+    try {
+      result = versionCheckService.checkVersion(firstVersionId, secondVersionId);
+    } catch (IlegalVersionIdException e) {
+      return new ResponseEntity<>("Error, please check your input again", HttpStatus.BAD_REQUEST);
+    }
 
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
